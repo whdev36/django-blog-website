@@ -10,4 +10,5 @@ urlpatterns = [
 	# path('logout/'. views.logout_user, name='logout'),
 	path('posts/', views.posts, name='posts'),
 	path('post/<int:pk>/', views.post, name='post'),
+	path('post/<int:pk>/clap/', views.clap, name='clap'),
 ]

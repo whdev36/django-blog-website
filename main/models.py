@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import F
 
 # --- POST MODEL ---
 class Post(models.Model):
@@ -9,11 +10,21 @@ class Post(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)  # created date
 	updated_at = models.DateTimeField(auto_now=True)  # updated date
 	is_published = models.BooleanField(default=True)  # is publish
+	claps = models.PositiveIntegerField(default=0)  # claps
+	views = models.PositiveIntegerField(default=0)  # view 
+
+	class Meta:
+		# verbose_name = 'Post'
+		# verbose_name_plural = 'Posts'
+		ordering = ['-created_at']
 
 	def __str__(self):
 		return self.title
 
-	class Meta:
-		verbose_name = 'Post'
-		verbose_name_plural = 'Posts'
-		ordering = ['-created_at']
+	def add_clap(self, commit=True):
+		self.claps += 1
+		self.save()
+
+	def add_view(self, commit=True):
+		self.views += 1
+		self.save()
