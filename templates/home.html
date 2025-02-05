@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
 
-{% block title %}Welcome{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block content %}
-    <div class="row">
-        <h1>Home</h1>
-    </div>
+    <h1>Trending Posts</h1>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.content|slice:":200" }}...</p> 
+                <p>views: {{ post.views }} | Claps: {{ post.claps }}</p>
+                <a href="{% url 'post' post.pk %}">more</a>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

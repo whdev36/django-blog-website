@@ -5,7 +5,8 @@ from django.http import JsonResponse
 
 # --- HOME PAGE ---
 def home(request):
-	posts = Post.objects.filter(is_published=True)
+	# posts = Post.objects.filter(is_published=True)
+	posts = Post.get_trending_posts()[:10]
 	return render(request, 'home.html', {'posts': posts})
 
 # --- POSTS ---

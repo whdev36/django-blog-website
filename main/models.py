@@ -28,3 +28,9 @@ class Post(models.Model):
 	def add_view(self, commit=True):
 		self.views += 1
 		self.save()
+
+	@classmethod
+	def get_trending_posts(cls):
+		return cls.objects.annotate(
+			total_interactions=F('views') + F('claps')
+			).order_by('-total_interactions', '-created_at')
