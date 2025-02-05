@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome{% endblock %}
+{% load static %}
+{% block content %}
+    <div class="row bg-light p-3 border shadow-sm w-90 mx-auto">
+        <h1 class="mb-0">Posts</h1>
+        <hr class="my-3">
+        {% if posts %}
+            {% for post in posts %}
+                <div class="col-md-4">
+                    <li class="post-list-item">
+                        <a class="text-decoration-none" href="#">{{ post.title }}</a>
+                    </li>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}
