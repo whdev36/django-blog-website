@@ -18,10 +18,10 @@
                     <i class="fas fa-eye"></i> {{ post.views }} ko'rishlar
                 </span>
                 <span class="text-muted">
-                    <i class="fas fa-hand-paper"></i> {{ post.claps }} qarsaklar
+                    <i class="fa-solid fa-hands-clapping"></i> <span id="clap-count">{{ post.claps }}</span> qarsaklar
                 </span>
-                <a id="clap" href="{% url 'clap' post.id %}" class="btn btn-sm btn-success">
-                    Clap <i class="fas fa-hand-paper"></i>
+                <a id="clap-btn" data-post-id="{{ post.pk }}" class="btn btn-sm btn-success">
+                    Qarsak <i class="fa-solid fa-hands-clapping"></i>
                 </a>
             </div>
         </header>

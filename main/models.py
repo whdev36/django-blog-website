@@ -58,8 +58,10 @@ class Post(models.Model):
 		return self.title
 
 	def add_clap(self, commit=True):
-		self.claps = F('claps') + 1
-		self.save(update_fields=['claps'])
+		# self.claps = F('claps') + 1
+		# self.save(update_fields=['claps'])
+		self.claps += 1
+		self.save()
 
 	def add_view(self, commit=True):
 		# self.views = F('views') + 1

@@ -25,11 +25,11 @@ def post(request, pk):
 def clap(request, pk):
 	post = get_object_or_404(Post, pk=pk)
 	post.add_clap()
-	return redirect('post', pk=post.pk)
+	# return redirect('post', pk=post.pk)
 	# post.claps = F('claps') + 1
 	# post.save(update_fields=['claps'])
 	# post.refresh_from_db()
-	# return JsonResponse({'success': True, 'claps': post.claps})
+	return JsonResponse({'success': True, 'claps': post.claps})
 
 
 # --- SEARCH ---

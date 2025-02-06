@@ -16,7 +16,7 @@
                     </a>
                 </h5>
                 <p class="card-text text-muted">
-                    By {{ post.author.username }} | {{ post.created_at|date:"F j, Y" }}
+                    {{ post.author.username }} | {{ post.created_at|date:"F j, Y" }}
                 </p>
                 <p class="card-text">
                     {{ post.get_markdown_content|safe|truncatewords:30 }}
