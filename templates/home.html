@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}Home - Trending Posts{% endblock %}
+{% block title %}Bosh sahifa - Ommabop maqolalar{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
-    <h1 class="mb-4">Trending Posts</h1>
+    <h1 class="mb-4">Ommabop maqolalar</h1>
     <div class="row">
         {% for post in posts %}
         <div class="col-md-6 col-lg-4 mb-4">
@@ -14,7 +14,7 @@
                     <p class="card-text">{{ post.get_markdown_content|safe|truncatewords:30 }}</p>
                 </div>
                 <div class="card-footer d-flex justify-content-between align-items-center">
-                    <a href="{% url 'post' post.pk %}" class="btn btn-sm btn-primary">Read More</a>
+                    <a href="{% url 'post' post.pk %}" class="btn btn-sm btn-primary">Batafsil</a>
                     <div class="">
                         <span class="text-muted">
                             <i class="fas fa-eye"></i> {{ post.views }}
@@ -28,7 +28,7 @@
         </div>
         {% empty %}
         <div class="col-12">
-            <p class="text-muted">No trending posts available.</p>
+            <p class="text-muted">Ommabop maqolalar mavjud emas.</p>
         </div>
         {% endfor %}
     </div>

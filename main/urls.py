@@ -8,8 +8,8 @@ urlpatterns = [
 	# path('login/', views.login_user, name='login'),
 	# path('register/', views.register_user, name='register'),
 	# path('logout/'. views.logout_user, name='logout'),
-	path('posts/', views.posts, name='posts'),
-	path('post/<int:pk>/', views.post, name='post'),
-	path('post/<int:pk>/clap/', views.clap, name='clap'),
-	path('search/', views.search, name='search'),
+	path('maqolalar/', views.posts, name='posts'),
+	path('maqola/<int:pk>/', views.post, name='post'),
+	path('maqola/<int:pk>/qarsak/', views.clap, name='clap'),
+	path('qidiruv/', views.search, name='search'),
 ]

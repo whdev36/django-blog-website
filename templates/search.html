@@ -1,24 +1,24 @@
 {% extends 'base.html' %}
 
-{% block title %}Search{% endblock %}
+{% block title %}Qidiruv{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
-    <h1 class="mb-4">Search Posts</h1>
+    <h1 class="mb-4">Maqolalarni qidirish</h1>
 
     <!-- Search Form -->
     <form method="get" action="{% url 'search' %}" class="mb-4">
         <div class="input-group">
-            <input type="text" name="q" class="form-control" placeholder="Search posts..." value="{{ query }}">
+            <input type="text" name="q" class="form-control" placeholder="Maqolalar qidirish..." value="{{ query }}">
             <button type="submit" class="btn btn-primary">
-                <i class="fas fa-search"></i> Search
+                <i class="fas fa-search"></i> Qidir
             </button>
         </div>
     </form>
 
     <!-- Search Results -->
     {% if query %}
-        <h2 class="mb-3">Results for "{{ query }}"</h2>
+        <h2 class="mb-3">"{{ query }}" uchun natijalar</h2>
         {% if results %}
             <div class="row">
                 {% for post in results %}
@@ -29,7 +29,7 @@
                                 <p class="card-text">{{ post.get_markdown_content|safe|truncatewords:30 }}</p>
                             </div>
                             <div class="card-footer d-flex justify-content-between align-items-center">
-                                <a href="{% url 'post' post.pk %}" class="btn btn-sm btn-primary">Read More</a>
+                                <a href="{% url 'post' post.pk %}" class="btn btn-sm btn-primary">Batafsil</a>
                                 <div class="">
                                     <span class="text-muted">
                                         <i class="fas fa-eye"></i> {{ post.views }}
@@ -44,7 +44,7 @@
                 {% endfor %}
             </div>
         {% else %}
-            <p class="text-muted">No results found.</p>
+            <p class="text-muted">Hech qanday natija topilmadi.</p>
         {% endif %}
     {% endif %}
 </div>

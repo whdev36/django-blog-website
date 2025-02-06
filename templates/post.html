@@ -8,17 +8,17 @@
         <header class="mb-4">
             <h1 class="display-4">{{ post.title }}</h1>
             <p class="text-muted">
-                By <strong>{{ post.author.username }}</strong> |
-                Published on <strong>{{ post.created_at|date:"F j, Y" }}</strong> |
-                Last updated on <strong>{{ post.updated_at|date:"F j, Y" }}</strong>
+                <strong>{{ post.author.username }}</strong> |
+                Chop etilgan <strong>{{ post.created_at|date:"F j, Y" }}</strong> |
+                Oxirgi yang. sana <strong>{{ post.updated_at|date:"F j, Y" }}</strong>
             </p>
             <div class="d-flex align-items-center gap-3">
                 <span class="badge bg-secondary">{{ post.category.name }}</span>
                 <span class="text-muted">
-                    <i class="fas fa-eye"></i> {{ post.views }} views
+                    <i class="fas fa-eye"></i> {{ post.views }} ko'rishlar
                 </span>
                 <span class="text-muted">
-                    <i class="fas fa-hand-paper"></i> {{ post.claps }} claps
+                    <i class="fas fa-hand-paper"></i> {{ post.claps }} qarsaklar
                 </span>
                 <a id="clap" href="{% url 'clap' post.id %}" class="btn btn-sm btn-success">
                     Clap <i class="fas fa-hand-paper"></i>
@@ -37,7 +37,7 @@
                 {% endfor %}
             </div>
             {% if post.sources %}
-            <h3>Sources:</h3>
+            <h3>Manbalar:</h3>
             <div class="fs-small">{{ post.get_markdown_sources|safe }}</div>
             {% endif %}
         </footer>
