@@ -20,6 +20,9 @@
                 <span class="text-muted">
                     <i class="fas fa-hand-paper"></i> {{ post.claps }} claps
                 </span>
+                <a id="clap" href="{% url 'clap' post.id %}" class="btn btn-sm btn-success">
+                    Clap <i class="fas fa-hand-paper"></i>
+                </a>
             </div>
         </header>
 
@@ -32,11 +35,6 @@
                 {% for tag in post.tags.all %}
                 <span class="badge bg-primary">{{ tag.name }}</span>
                 {% endfor %}
-            </div>
-            <div class="mb-3">
-                <a id="clap" href="{% url 'clap' post.id %}" class="btn btn-sm btn-success">
-                    Clap <i class="fas fa-hand-paper"></i>
-                </a>
             </div>
             {% if post.sources %}
             <h3>Sources:</h3>

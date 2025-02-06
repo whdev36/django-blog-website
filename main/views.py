@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from .models import Post
 from django.http import JsonResponse
-from django.db.models import F
+from django.db.models import F, Q
 
 # --- HOME PAGE ---
 def home(request):
@@ -30,3 +30,16 @@ def clap(request, pk):
 	# post.save(update_fields=['claps'])
 	# post.refresh_from_db()
 	# return JsonResponse({'success': True, 'claps': post.claps})
+
+
+# --- SEARCH ---
+def search(request):
+	query = request.GET.get('q', '')
+	results = []
+	if query:
+		results = Post.objects.filter(
+			Q(title__icontains=query) |
+			Q(content__icontains=query) |
+			Q(tags__name__icontains=query)
+		).distinct()
+	return render(request, 'search.html', {'query': query, 'results': results})
