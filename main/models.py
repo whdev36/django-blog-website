@@ -76,7 +76,7 @@ class Post(models.Model):
 	def get_markdown_content(self):
 		raw_html = markdown.markdown(self.content, extensions=['extra'])
 		allowed_tags = ['p', 'a', 'b', 'i', 'strong', 'em', 'ul', 'ol', 'li', 'code',
-			'img', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'br']
+			'img', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'br', 'pre']
 		allowed_attributes = {
 			'a': ['href', 'title'],
 			'img': ['src', 'alt', 'width', 'height']
