@@ -1,15 +1,19 @@
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+{% load static %}
+
+<nav class="navbar navbar-expand-lg bg-light">
     <div class="container">
-        <a class="navbar-brand" href="{% url 'home' %}">Blog</a>
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'logo.png' %}" width="30", height="30">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu-toggler">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="menu-toggler">
             <div class="navbar-nav">
-                <a class="nav-link" href="{% url 'home' %}">Bosh sahifa</a>
-                <a class="nav-link" href="{% url 'posts' %}">Maqolalar</a>
-                <a class="nav-link" href="{% url 'search' %}">Qidiruv</a>
-                <a class="nav-link" href="{% url 'categories' %}">Turkumlar</a>
+                <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Bosh sahifa</a>
+                <a class="nav-link" href="{% url 'posts' %}"><i class="fa-solid fa-newspaper"></i> Maqolalar</a>
+                <a class="nav-link" href="{% url 'search' %}"><i class="fa-solid fa-magnifying-glass"></i> Qidiruv</a>
+                <a class="nav-link" href="{% url 'categories' %}"><i class="fa-solid fa-list"></i> Turkumlar</a>
             </div>
         </div>
     </div>

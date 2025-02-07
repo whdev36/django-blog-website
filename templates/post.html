@@ -7,13 +7,19 @@
     <article class="col-md-8 offset-md-2">
         <header class="mb-4">
             <h1 class="display-4">{{ post.title }}</h1>
-            <p class="text-muted">
-                <strong>{{ post.author.username }}</strong> |
-                Chop etilgan <strong>{{ post.created_at|date:"F j, Y" }}</strong> |
-                Oxirgi yang. sana <strong>{{ post.updated_at|date:"F j, Y" }}</strong>
+            <p>
+                <i class="fa-solid fa-user"></i>
+                <strong class="text-muted">{{ post.author.username }}</strong> |
+                <i class="fa-solid fa-calendar-days"></i>
+                Chop etilgan
+                <strong class="text-muted">{{ post.created_at|date:"F j, Y" }}</strong> |
+                <i class="fa-solid fa-calendar-days"></i>
+                Oxirgi yang. sana <strong class="text-muted">{{ post.updated_at|date:"F j, Y" }}</strong>
             </p>
             <div class="d-flex align-items-center gap-3">
-                <span class="badge bg-secondary">{{ post.category.name }}</span>
+                <a class="badge bg-secondary text-decoration-none" href="{% url 'category' post.category.slug %}">
+                    {{ post.category.name }}
+                </a>
                 <span class="text-muted">
                     <i class="fas fa-eye"></i> {{ post.views }} ko'rishlar
                 </span>
@@ -33,12 +39,12 @@
         <footer>
             <div class="d-flex gap-3 mb-3">
                 {% for tag in post.tags.all %}
-                <span class="badge bg-primary">{{ tag.name }}</span>
+                <a href="{% url 'tag' tag.slug %}" class="badge fs-6 fw-medium badge-lg bg-primary text-decoration-none">#{{ tag.name }}</a>
                 {% endfor %}
             </div>
             {% if post.sources %}
-            <h3>Manbalar:</h3>
-            <div class="fs-small">{{ post.get_markdown_sources|safe }}</div>
+            <h6>Manbalar:</h6>
+            <div class="" style="font-size: 10px;">{{ post.get_markdown_sources|safe }}</div>
             {% endif %}
         </footer>
     </article>

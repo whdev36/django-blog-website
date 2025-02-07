@@ -103,4 +103,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Credits
 
-- **Icons**: [Document icons created by Roman Káčerek - Flaticon](https://www.flaticon.com/free-icons/document)
+- **Icons**:
+  - [Document icons created by Roman Káčerek - Flaticon](https://www.flaticon.com/free-icons/document)
+  - [Cybersecurity icons created by Slamlabs - Flaticon](https://www.flaticon.com/free-icons/)
+  - [Cybersecurity icons created by Slamlabs - Flaticon](https://www.flaticon.com/free-icons/cybersecurity)

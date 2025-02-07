@@ -14,4 +14,5 @@ urlpatterns = [
 	path('qidiruv/', views.search, name='search'),
 	path('turkumlar/', views.categories, name='categories'),
 	path('turkum/<slug:slug>/', views.category, name='category'),
+	path('teg/<slug:slug>/', views.tag, name='tag'),
 ]

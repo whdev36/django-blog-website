@@ -14,7 +14,7 @@ class Category(models.Model):
 		ordering = ['name']
 
 	name = models.CharField(max_length=150, unique=True)  # name
-	slug = models.SlugField(max_length=150, blank=True, unique=True)  # category
+	slug = models.SlugField(max_length=150, blank=True, null=True, unique=True)  # category
 
 	def save(self, *args, **kwargs):
 		if not self.slug:
@@ -30,7 +30,13 @@ class Tag(models.Model):
 		verbose_name_plural = 'Tags'
 		ordering = ['name']
 
-	name = models.CharField(max_length=150)  # name
+	name = models.CharField(max_length=150, unique=True)  # name
+	slug = models.SlugField(max_length=150, blank=True, null=True, unique=True)  # slug of tag
+
+	def save(self, *args, **kwargs):
+		if not self.slug:
+			self.slug = slugify(self.name)
+		super().save(*args, **kwargs)
 
 	def __str__(self):
 		return self.name
@@ -83,7 +89,7 @@ class Post(models.Model):
 			'a': ['href', 'title'],
 			'img': ['src', 'alt', 'width', 'height']
 		}
-		return bleach.clean(raw_html, tags=allowed_tags, attributes=allowed_attributes)
+		return bleach.clean(raw_html, tags=allowed_tags, attributes=allowed_attributes, protocols=['https', 'http'])
 
 	def get_markdown_sources(self):
 		if not self.sources:
@@ -93,4 +99,4 @@ class Post(models.Model):
 		allowed_attributes = {
 			'a': ['href', 'title'],
 		}
-		return bleach.clean(raw_html, tags=allowed_tags, attributes=allowed_attributes)
+		return bleach.clean(raw_html, tags=allowed_tags, attributes=allowed_attributes, protocols=['https', 'http'])

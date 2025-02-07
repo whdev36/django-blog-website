@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
-from .models import Post, Category
+from .models import Post, Category, Tag
 from django.http import JsonResponse
 from django.db.models import F, Q
 
@@ -52,3 +52,8 @@ def category(request, slug):
 	category = get_object_or_404(Category, slug=slug)
 	posts = Post.objects.filter(category=category, is_published=True)
 	return render(request, 'category.html', {'category': category, 'posts': posts})
+
+def tag(request, slug):
+	tag = get_object_or_404(Tag, slug=slug)
+	posts = Post.objects.filter(tags=tag, is_published=True)
+	return render(request, 'tag.html', {'posts': posts, 'tag': tag})

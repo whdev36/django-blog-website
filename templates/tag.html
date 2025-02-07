@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ category.name }} | Maqolalar{% endblock %}
+{% block title %}{{ tag.name }} | Maqolalar{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
-    <h1 class="mb-4">{{ category.name }} turkumidagi maqolalar</h1>
+    <h1 class="mb-4">{{ tag.name }} tegiga mos maqolalar</h1>
     <div class="row">
         {% for post in posts %}
         <div class="col-md-6 col-lg-4 mb-4">
@@ -36,7 +36,7 @@
         </div>
         {% empty %}
         <div class="col-12">
-            <p class="text-muted">Ushbu turkumda hech qanday maqola mavjud emas.</p>
+            <p class="text-muted">Bu tegga mos maqola topilmadi.</p>
         </div>
         {% endfor %}
     </div>
