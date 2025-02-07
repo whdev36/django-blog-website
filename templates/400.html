@@ -1,0 +1,12 @@
+<!-- templates/400.html -->
+{% extends 'base.html' %}
+
+{% block title %}Noto'g'ri So'rov{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>400 - Noto'g'ri so'rov</h1>
+    <p>Sizning so'rovingiz noto'g'ri. Tekshirib, qayta urinib koʻring.</p>
+    <a href="{% url 'home' %}" class="btn btn-primary">Bosh sahifaga qaytish</a>
+</div>
+{% endblock %}

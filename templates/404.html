@@ -1,0 +1,12 @@
+<!-- templates/404.html -->
+{% extends 'base.html' %}
+
+{% block title %}Sahifa Topilmadi{% endblock %}
+
+{% block content %}
+<div class="">
+    <h1>404 - Sahifa topilmadi</h1>
+    <p>Siz qidirayotgan sahifa mavjud emas.</p>
+    <a href="{% url 'home' %}" class="btn btn-primary">Bosh sahifaga qaytish</a>
+</div>
+{% endblock %}

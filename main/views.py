@@ -44,16 +44,32 @@ def search(request):
 		).distinct()
 	return render(request, 'search.html', {'query': query, 'results': results})
 
+# --- CATEGORIES ---
 def categories(request):
 	categories = Category.objects.all()
 	return render(request, 'categories.html', {'categories': categories})
 
+# --- CATEGORY ---
 def category(request, slug):
 	category = get_object_or_404(Category, slug=slug)
 	posts = Post.objects.filter(category=category, is_published=True)
 	return render(request, 'category.html', {'category': category, 'posts': posts})
 
+# --- TAG ---
 def tag(request, slug):
 	tag = get_object_or_404(Tag, slug=slug)
 	posts = Post.objects.filter(tags=tag, is_published=True)
 	return render(request, 'tag.html', {'posts': posts, 'tag': tag})
+
+# --- ERROR PAGES ---
+def custom_400(request, exception=None):
+	return render(request, '400.html', status=400)
+
+def custom_403(request, exception=None):
+	return render(request, '403.html', status=403)
+
+def custom_404(request, exception=None):
+	return render(request, '404.html', status=404)
+
+def custom_500(request, exception=None):
+	return render(request, '500.html', status=500)

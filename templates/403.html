@@ -1,0 +1,12 @@
+<!-- templates/403.html -->
+{% extends 'base.html' %}
+
+{% block title %}Taqiqlangan{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>403 - Taqiqlangan</h1>
+    <p>Sizda bu sahifaga kirish uchun ruxsat yo'q.</p>
+    <a href="{% url 'home' %}" class="btn btn-primary">Bosh sahifaga qaytish</a>
+</div>
+{% endblock %}

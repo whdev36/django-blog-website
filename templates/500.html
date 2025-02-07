@@ -1,0 +1,12 @@
+<!-- templates/500.html -->
+{% extends 'base.html' %}
+
+{% block title %}Server Xatosi{% endblock %}
+
+{% block content %}
+<div class="">
+    <h1>500 - Server xatosi</h1>
+    <p>Nimadir xato ketdi. Keyinroq qayta urinib ko‘ring.</p>
+    <a href="{% url 'home' %}" class="btn btn-primary">Bosh sahifaga qaytish</a>
+</div>
+{% endblock %}
