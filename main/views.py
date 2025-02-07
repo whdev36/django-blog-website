@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
-from .models import Post
+from .models import Post, Category
 from django.http import JsonResponse
 from django.db.models import F, Q
 
@@ -43,3 +43,7 @@ def search(request):
 			Q(tags__name__icontains=query)
 		).distinct()
 	return render(request, 'search.html', {'query': query, 'results': results})
+
+def categories(request):
+	categories = Category.objects.all()
+	return render(request, 'categories.html', {'categories': categories})

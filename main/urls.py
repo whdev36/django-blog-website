@@ -12,4 +12,5 @@ urlpatterns = [
 	path('maqola/<int:pk>/', views.post, name='post'),
 	path('maqola/<int:pk>/qarsak/', views.clap, name='clap'),
 	path('qidiruv/', views.search, name='search'),
+	path('turkumlar/', views.categories, name='categories'),
 ]
