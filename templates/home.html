@@ -3,34 +3,41 @@
 {% block title %}Bosh sahifa - Ommabop maqolalar{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <h1 class="mb-4">Ommabop maqolalar</h1>
-    <div class="row">
-        {% for post in posts %}
-        <div class="col-md-6 col-lg-4 mb-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">{{ post.title }}</h5>
-                    <p class="card-text">{{ post.get_markdown_content|safe|truncatewords:30 }}</p>
+<h1 class="mb-4">Ommabop maqolalar</h1>
+<div class="row">
+    {% for post in posts %}
+    <!-- Card -->
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">{{ post.author.username }}</h6>
+                <p class="card-text text-muted">{{ post.created_at|date:"F j, Y" }}</p>
+                <p class="card-text">{{ post.get_markdown_content|safe|truncatewords:30 }}</p>
+                <div class="mt-1">
+                    <a class="badge bg-secondary text-decoration-none" href="{% url 'category' post.category.slug %}">
+                        {{ post.category.name }}
+                    </a>
                 </div>
-                <div class="card-footer d-flex justify-content-between align-items-center">
-                    <a href="{% url 'post' post.pk %}" class="btn btn-sm btn-primary">Batafsil</a>
-                    <div class="">
-                        <span class="text-muted">
-                            <i class="fas fa-eye"></i> {{ post.views }}
-                        </span>
-                        <span class="text-muted">
-                            <i class="fas fa-hand-paper"></i> {{ post.claps }}
-                        </span>
-                    </div>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+                <a href="#" class="btn btn-sm btn-primary">Batafsil</a>
+                <div class="">
+                    <span class="text-muted me-3">
+                        <i class="fas fa-eye"></i> {{ post.views }}
+                    </span>
+                    <span class="text-muted">
+                        <i class="fas fa-hand-paper"></i> {{ post.claps }}
+                    </span>
                 </div>
             </div>
         </div>
-        {% empty %}
-        <div class="col-12">
-            <p class="text-muted">Ommabop maqolalar mavjud emas.</p>
-        </div>
-        {% endfor %}
     </div>
+    <!-- /Card -->
+    {% empty %}
+    <div class="col-12">
+        <p class="text-muted">Ommabop maqolalar mavjud emas.</p>
+    </div>
+    {% endfor %}
 </div>
 {% endblock %}
