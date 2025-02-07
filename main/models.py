@@ -100,3 +100,9 @@ class Post(models.Model):
 			'a': ['href', 'title'],
 		}
 		return bleach.clean(raw_html, tags=allowed_tags, attributes=allowed_attributes, protocols=['https', 'http'])
+
+	def get_author(self):
+		if self.author.first_name and self.author.last_name:
+			return f'{self.author.first_name} {self.author.last_name}'
+		
+		return self.author.username

@@ -9,7 +9,7 @@
             <h1 class="display-4">{{ post.title }}</h1>
             <p>
                 <i class="fa-solid fa-user"></i>
-                <strong class="text-muted">{{ post.author.username }}</strong> |
+                <strong class="text-muted">{{ post.get_author }}</strong> |
                 <i class="fa-solid fa-calendar-days"></i>
                 Chop etilgan
                 <strong class="text-muted">{{ post.created_at|date:"F j, Y" }}</strong> |

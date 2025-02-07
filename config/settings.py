@@ -38,7 +38,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'main.middleware.RestrictAdminMiddleware',
+    # 'main.middleware.RestrictAdminMiddleware',
 ]
 
 INSTALLED_APPS += ['axes']
