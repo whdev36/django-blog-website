@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models import F
 from django.utils.text import slugify
 import markdown
+# import markdown2
 import bleach
 
 
@@ -84,10 +85,12 @@ class Post(models.Model):
 	def get_markdown_content(self):
 		raw_html = markdown.markdown(self.content, extensions=['extra'])
 		allowed_tags = ['p', 'a', 'b', 'i', 'strong', 'em', 'ul', 'ol', 'li', 'code',
-			'img', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'br', 'pre']
+			'img', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'br', 'pre', 'span', 'div']
 		allowed_attributes = {
 			'a': ['href', 'title'],
-			'img': ['src', 'alt', 'width', 'height']
+			'img': ['src', 'alt', 'width', 'height'],
+			'span': ['class', 'id'],
+			'div': ['class', 'id'],
 		}
 		return bleach.clean(raw_html, tags=allowed_tags, attributes=allowed_attributes, protocols=['https', 'http'])
 

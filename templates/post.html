@@ -6,7 +6,7 @@
 <div class="row">
     <article class="col-md-8 offset-md-2">
         <header class="mb-4">
-            <h1 class="display-4">{{ post.title }}</h1>
+            <h1 class="display-5">{{ post.title }}</h1>
             <p>
                 <i class="fa-solid fa-user"></i>
                 <strong class="text-muted">{{ post.get_author }}</strong> |
@@ -32,7 +32,7 @@
             </div>
         </header>
 
-        <section id="post-content" class="mb-4">
+        <section class="post-content mb-4">
             {{ post.get_markdown_content|safe }}
         </section>
 
