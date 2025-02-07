@@ -47,3 +47,8 @@ def search(request):
 def categories(request):
 	categories = Category.objects.all()
 	return render(request, 'categories.html', {'categories': categories})
+
+def category(request, slug):
+	category = get_object_or_404(Category, slug=slug)
+	posts = Post.objects.filter(category=category, is_published=True)
+	return render(request, 'category.html', {'category': category, 'posts': posts})
