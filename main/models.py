@@ -47,6 +47,7 @@ class Post(models.Model):
 	title = models.CharField(max_length=255)  # title
 	content = models.TextField()  # content
 	author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')  # author
+	image_url = models.URLField(max_length=255, blank=True, null=True)
 	category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='posts')  # category
 	tags = models.ManyToManyField(Tag, related_name='posts', blank=True)  # tags
 	sources = models.TextField(blank=True, null=True)  # sources
@@ -83,9 +84,10 @@ class Post(models.Model):
 		).order_by('-total_interactions', '-created_at')[:limit]
 
 	def get_markdown_content(self):
-		raw_html = markdown.markdown(self.content, extensions=['extra'])
+		raw_html = markdown.markdown(self.content, extensions=['extra', 'tables', 'footnotes'])
 		allowed_tags = ['p', 'a', 'b', 'i', 'strong', 'em', 'ul', 'ol', 'li', 'code',
-			'img', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'br', 'pre', 'span', 'div']
+			'img', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'br', 'pre', 'span', 'div',
+			'table', 'tr', 'td', 'th', 'tfoot', 'thead', 'tbody', 'thead']
 		allowed_attributes = {
 			'a': ['href', 'title'],
 			'img': ['src', 'alt', 'width', 'height'],
