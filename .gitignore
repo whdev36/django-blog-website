@@ -1,2 +1,3 @@
 .blog-venv
 db.sqlite3
+/main/migrations
