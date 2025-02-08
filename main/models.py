@@ -16,6 +16,16 @@ class Category(models.Model):
 
 	name = models.CharField(max_length=150, unique=True)  # name
 	slug = models.SlugField(max_length=150, blank=True, null=True, unique=True)  # category
+	color = models.CharField(max_length=50, choices=[
+		('primary', 'Primary'),
+		('secondary', 'Secondary'),
+		('success', 'Success'),
+		('danger', 'Danger'),
+		('warning', 'Warning'),
+		('info', 'Info'),
+		('light', 'Light'),
+		('dark', 'Dark'),
+	], default='primary')
 
 	def save(self, *args, **kwargs):
 		if not self.slug:

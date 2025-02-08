@@ -17,7 +17,7 @@
                 Oxirgi yang. sana <strong class="text-muted">{{ post.updated_at|date:"F j, Y" }}</strong>
             </p>
             <div class="d-flex align-items-center gap-3">
-                <a class="badge bg-secondary text-decoration-none" href="{% url 'category' post.category.slug %}">
+                <a class="badge bg-{{ post.category.color }} text-decoration-none" href="{% url 'category' post.category.slug %}">
                     {{ post.category.name }}
                 </a>
                 <span class="text-muted">
